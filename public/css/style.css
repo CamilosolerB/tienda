@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url('https://surtifruver.com/wp-content/uploads/2019/05/938.jpg');
+}
+header{
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu ul{
+    list-style: none;
+}
+.menu li{
+    display: inline-block;
+}
+.menu li a{
+    display: block;
+    padding-top: 40%;
+    padding-bottom: 40%;
+    padding-right: 5%;
+    padding-left: 5%;
+    color: #222;
+    text-decoration: none;
+}
+.menu li a:hover{
+    background-color: #222;
+    color: #fff;
+}
+.subir{
+
+    margin: 5% 0 5% 5%;
+    background-color: #F90184;
+    border-radius: 10px;
+    color: #fff;
+    border: 1px black solid;
+    padding: 5% 25% 5% 25%;
+}
+.caja{
+    box-shadow: 100px black;
+    padding: 5%;
+    position: absolute;
+    top: 30%;
+    left: 37%;
+    width: 15%;
+    background-color: #fff;
+    flex-wrap: nowrap;
+    border-radius: 10px;
+}
+.caja label{
+    font-family: 'Source Sans Pro', sans-serif;
+    display: block;
+    padding: 5%;
+    font-size: 1.5rem;
+}
+.caja .label{
+    padding: 5%;
+    display: block;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Login</title>
+</head>
+<body>
+    <header class="cabecera">
+        <img src="../imagenes/logo.png" alt="">
+        <nav class="menu">
+            <ul>
+                <li><a href="">¿Quienes somos?</a></li>
+                <li><a href="">La canasta</a></li>
+                <li><a href="">Iniciar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form action="/login" method="post" class="caja">
+        <label for="">Usuario</label>
+        <input type="text" class="label" id="clave" placeholder="Usuario" name="usuario">
+        <label for="">contraseña</label>
+        <input type="password" placeholder="contraseña" class="label" id="clave" name="clave">
+        <input type="submit" name="Iniciar sesion" value="Iniciar sesion" class="subir">
+        <a href="#">Olvidaste tu contraseña?</a>
+    </form>
+</body>
+</html>
