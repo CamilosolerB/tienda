@@ -1,5 +1,5 @@
-const conexion = require('../conexion/conection')
-const cnn = conexion();
+const connection = require('../conexion/conection')
+const cnn = connection();
 const bcryptjs = require('bcryptjs')
 const controller={};
 //creacion de los metodos
