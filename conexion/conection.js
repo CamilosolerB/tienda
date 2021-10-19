@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 module.exports=()=>{
     mysql.createConnection({
-        host:'x8autxobia7sgh74.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-        user:'fpfbgg1ykmzbreku',
-        password:'hzmgccsqavc7fhx5',
+        host:'bgiebq8wmwx2ho0v9gpb-mysql.services.clever-cloud.com',
+        user:'ujpuwetrdavzgjdn',
+        password:'ujpuwetrdavzgjdn',
         port:"3306",
-        database:'rzh2gn34x6vb0kx0'
+        database:'bgiebq8wmwx2ho0v9gpb'
     })
 }
