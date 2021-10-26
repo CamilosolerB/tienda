@@ -20,4 +20,22 @@ controller.login=async(req,res,next)=>{
         }
     })
 }
+controller.usuario=(req,res,next)=>{
+    res.render('usuarios')
+}
+controller.clientes=(req,res,next)=>{
+    res.render('clientes')
+}
+controller.proveedores=(req,res,next)=>{
+    res.render('proveedores')
+}
+controller.productos=(req,res,next)=>{
+    res.render('productos')
+}
+controller.reportes=(req,res,next)=>{
+    res.render('reportes')
+}
+controller.ventas=(req,res,next)=>{
+    res.render('ventas');
+}
 module.exports=controller;

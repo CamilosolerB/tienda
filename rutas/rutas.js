@@ -6,9 +6,13 @@ const rutas = express.Router();
 
 //tipo get
 rutas.get('/',controlador.index);
-
+rutas.get('/usuario',controlador.usuario);
+rutas.get('/cliente',controlador.clientes);
+rutas.get('/productos',controlador.productos);
+rutas.get('/proveedores',controlador.proveedores);
+rutas.get('/reportes',controlador.reportes);
+rutas.get('/ventas',controlador.ventas);
 //tipo post
-console.log("en las rutas")
 rutas.post('/login',controlador.login)
 
 module.exports=rutas;
