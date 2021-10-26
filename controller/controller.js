@@ -5,10 +5,12 @@ const controller={};
 controller.index=(req,res,next)=>{
     res.render('index')
 }
-controller.login=(req,res,next)=>{
+controller.login=async(req,res,next)=>{
+    console.log("llego")
     const usu = req.body.usuario;
+    console.log(usu)
     const cla = req.body.clave;
-    mysqlconexion.query('SELECT * FROM usuarios WHERE usario=? AND password=?',[usu,cla],(err,resbb)=>{
+    mysqlconexion.query('SELECT * FROM usuarios WHERE usuario=? AND password=1234',[usu,cla],async(err,resbb)=>{
         if(err){
             next(new Error(err))
         }

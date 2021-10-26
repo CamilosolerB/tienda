@@ -1,7 +1,6 @@
 const express = require('express');
 const controlador = require('../controller/controller')
 const rutas = express.Router();
-const mysqlconexion = require('../conexion/conection');
 
 //indicacion de links
 
@@ -9,6 +8,7 @@ const mysqlconexion = require('../conexion/conection');
 rutas.get('/',controlador.index);
 
 //tipo post
+console.log("en las rutas")
 rutas.post('/login',controlador.login)
 
 module.exports=rutas;
