@@ -1,5 +1,4 @@
-const connection = require('../conexion/conection')
-const cnn = connection();
+const mysqlconexion = require('../conexion/conection')
 const bcryptjs = require('bcryptjs')
 const controller={};
 //creacion de los metodos
@@ -9,7 +8,7 @@ controller.index=(req,res,next)=>{
 controller.login=(req,res,next)=>{
     const usu = req.body.usuario;
     const cla = req.body.clave;
-    cnn.query('SELECT * FROM usuarios WHERE usario=? AND password=?',[usu,cla],(err,resbb)=>{
+    mysqlconexion.query('SELECT * FROM usuarios WHERE usario=? AND password=?',[usu,cla],(err,resbb)=>{
         if(err){
             next(new Error(err))
         }

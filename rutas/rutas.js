@@ -1,6 +1,7 @@
 const express = require('express');
 const controlador = require('../controller/controller')
 const rutas = express.Router();
+const mysqlconexion = require('../conexion/conection');
 
 //indicacion de links
 
