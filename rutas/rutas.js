@@ -12,6 +12,7 @@ rutas.get('/productos',controlador.productos);
 rutas.get('/proveedores',controlador.proveedores);
 rutas.get('/reportes',controlador.reportes);
 rutas.get('/ventas',controlador.ventas);
+rutas.get('/agregarusuario',controlador.insusu)
 //tipo post
 rutas.post('/login',controlador.login)
 

@@ -65,4 +65,15 @@ header{
 .boton:hover::after {
 	top: 0;
 }
+.formulario{
+    border-radius: 10px;
+    width: 80%;
+    padding-top: 5%;
+    margin-top: 5%;
+    margin-left: 10%;
+    background-color: #fff;
+}
+.cajaformulario{
+    background-color: #fff;
+}
 

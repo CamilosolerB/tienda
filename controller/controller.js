@@ -21,7 +21,15 @@ controller.login=async(req,res,next)=>{
     })
 }
 controller.usuario=(req,res,next)=>{
-    res.render('usuarios')
+    mysqlconexion.query("select * from usuarios",(err,result)=>{
+        if(err){
+            throw err
+        }
+        else{
+            res.render('usuarios',{datos:result})
+            console.log(result)
+        }
+    })
 }
 controller.clientes=(req,res,next)=>{
     res.render('clientes')
@@ -37,5 +45,8 @@ controller.reportes=(req,res,next)=>{
 }
 controller.ventas=(req,res,next)=>{
     res.render('ventas');
+}
+controller.insusu=(req,res)=>{
+    res.render('insusu')
 }
 module.exports=controller;
