@@ -49,4 +49,36 @@ controller.ventas=(req,res,next)=>{
 controller.insusu=(req,res)=>{
     res.render('insusu')
 }
+controller.insertarusu=async(req,res)=>{
+    const ced = req.body.doc;
+    const cor = req.body.correo;
+    const nam = req.body.nombre;
+    const cla = req.body.clave;
+    const usu = req.body.usuario;
+    const clave = await bcryptjs.hash(cla,8);
+
+    mysqlconexion.query('Insert into usuarios set?',{cedula_usuarios:ced,email_usuario:cor,nombre_usuario:nam,password:clave,usuario:usu},(err)=>{
+        if(err){
+            throw err
+        }
+        else{
+            res.redirect('/usuario')
+        }
+    })
+}
+controller.actusu=async(req,res,next)=>{
+    console.log("entrada al metodo")
+    const ced = req.params.cedula;
+    console.log(ced)
+    mysqlconexion.query('SELECT * FROM usuarios WHERE cedula_usuarios="'+ced+'"',async(err,result)=>{
+        console.log(result)
+        if(err){
+            next(new Error(err))
+        }
+        else{
+            res.render('actusu',{datos:result})
+            console.log(result)
+        }
+    })
+}
 module.exports=controller;

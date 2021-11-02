@@ -58,19 +58,19 @@
         </tr>
       </thead>
       <tbody>
-        <% datos.forEach( function (datos) {%>
+        <%  for(i=0;i<datos.length;i++){%>
         <tr>
-          <th scope="row"><%=datos.cedula_usuarios%></th>
-          <td><%=datos.email_usuario%></td>
-          <td><%=datos.nombre_usuario%></td>
-          <td><%=datos.password%></td>
-          <td><%=datos.usuario%></td>
-          <td><button type="button" class="btn btn-outline-primary"><i class="fas fa-exchange-alt"></i></button>
+          <th scope="row"><%=datos[i].cedula_usuarios%></th>
+          <td><%=datos[i].email_usuario%></td>
+          <td><%=datos[i].nombre_usuario%></td>
+          <td><%=datos[i].password%></td>
+          <td><%=datos[i].usuario%></td>
+          <td><button type="button" onclick="window.location.href='/infousuario/<%=datos[i].cedula_usuarios%>'" class="btn btn-outline-primary"><i class="fas fa-exchange-alt"></i></button>
             <button type="button" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
           </td>
           
         </tr>
-        <%})%>
+        <%}%>
       </tbody>
     </table>
 </section>
