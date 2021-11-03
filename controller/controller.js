@@ -81,4 +81,30 @@ controller.actusu=async(req,res,next)=>{
         }
     })
 }
+    controller.actualizarusu=async(req,res)=>{
+        const ced = req.body.doc;
+        const ema = req.body.correo;
+        const user = req.body.nombre;
+        const pass = req.body.clave;
+        const usu = req.body.usuario;
+        const password = await bcryptjs.hash(pass,8);
+        mysqlconexion.query('UPDATE usuarios SET email_usuario="'+ema+'" , nombre_usuario="'+user+'", password="'+password+'", usuario="'+usu+'" WHERE cedula_usuarios="'+ced+'"',async(err)=>{
+            if(err){
+                throw err
+            }
+            else{
+                console.log("Datos actualizados")
+                res.redirect('/usuario')
+            }
+        })
+    }
+
+    controller.borrarusu=(req,res)=>{
+        const id = req.params.cedula;
+        mysqlconexion.query('DELETE FROM usuarios WHERE cedula_usuarios=?',[id],(err)=>{
+
+                console.log("eliminado");
+                res.redirect('/usuario')
+        })
+    }
 module.exports=controller;

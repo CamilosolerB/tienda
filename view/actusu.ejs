@@ -36,21 +36,21 @@
             </ul>
         </nav>
     </div>
-    <form class="cajaformulario" method="post" action="/insertarusuario">
+    <form method="post" action="/actualizarusuario">
         <h1 style="text-align: center;">Insertar Usuario</h1>
-        <label for="">Cedula del usuario <input type="number" name="doc" class="form-control"></label>
+        <label for="">Cedula del usuario <input value="<%=datos[0].cedula_usuarios %>" readonly type="number" name="doc" class="form-control"></label>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Correo electronico</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="correo">
+            <input type="email" class="form-control" id="exampleFormControlInput1" value="<%=datos[0].email_usuario%>" placeholder="name@example.com" name="correo">
           </div>
           <label for="nombre">Nombre del usuario</label>
-        <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre del usuario" >
+        <input type="text" name="nombre" id="nombre" value="<%=datos[0].nombre_usuario%>" class="form-control" placeholder="Nombre del usuario" >
         <div class="row g-3 align-items-center">
             <div class="col-auto">
               <label for="inputPassword6" class="col-form-label">Contraseña</label>
             </div>
             <div class="col-auto">
-              <input type="password" name="clave" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+              <input type="password" name="clave" value="<%=datos[0].password%>" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
             </div>
             <div class="col-auto">
               <span id="passwordHelpInline" class="form-text">
@@ -58,8 +58,9 @@
               </span>
             </div>
           </div>
-          <label for="">Usuario <input type="text" class="form-control" placeholder="Usuario" name="usuario"></label>
-          <input class="btn btn-primary" type="submit" value="Añadir usuario">
+          <label for="">Usuario <input type="text" value="<%=datos[0].usuario%>" class="form-control" placeholder="Usuario" name="usuario"></label>
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+<button type="button" onclick="window.location.href='/usuario'" class="btn btn-secondary">Cancelar</button>
     </form>    
 </body>
 </html>
