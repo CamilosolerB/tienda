@@ -1,22 +1,47 @@
 const mysqlconexion = require('../conexion/conection')
 const bcryptjs = require('bcryptjs')
 const controller={};
+const Swal = require('sweetalert2')
 //creacion de los metodos
 controller.index=(req,res,next)=>{
     res.render('index')
 }
 controller.login=async(req,res,next)=>{
-    console.log("llego")
+
+    function mensage(){
+
+        
+        Swal.fire(
+            'Usuario incorrecto',
+            'Usuario o contraseña no encontrado',
+            'error'
+          )
+    }
     const usu = req.body.usuario;
-    console.log(usu)
     const cla = req.body.clave;
-    mysqlconexion.query('SELECT * FROM usuarios WHERE usuario=? AND password=1234',[usu,cla],async(err,resbb)=>{
+    mysqlconexion.query('SELECT * FROM usuarios WHERE usuario=?',[usu],async(err,resbb)=>{
+
+        let password = resbb[0].password;
+        console.log(cla)
+        console.log(password)
+
         if(err){
             next(new Error(err))
         }
-        else{
+
+         else if(resbb!=0 && bcryptjs.compare(cla,password)){
+            console.log(cla)
+             console.log(resbb[0].password)
+            req.session.login = true;
+            if(req.session.login){
             res.render('menu',{datos:resbb})
             console.log(resbb)
+            }
+            
+        }
+        else{
+            mensage();
+            res.redirect('/')
         }
     })
 }
@@ -105,6 +130,11 @@ controller.actusu=async(req,res,next)=>{
 
                 console.log("eliminado");
                 res.redirect('/usuario')
+        })
+    }
+    controller.cerrar=(req,res,next)=>{
+        req.session.destroy(()=>{
+            res.redirect('/logueo')
         })
     }
 module.exports=controller;

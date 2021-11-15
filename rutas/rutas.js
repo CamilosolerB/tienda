@@ -2,7 +2,7 @@ const express = require('express');
 const controlador = require('../controller/controller')
 const rutas = express.Router();
 
-//indicacion de links
+//indicacion del rest
 
 //tipo get
 rutas.get('/',controlador.index);
@@ -19,4 +19,5 @@ rutas.get('/borrarusuario/:cedula',controlador.borrarusu);
 rutas.post('/login',controlador.login)
 rutas.post('/insertarusuario',controlador.insertarusu)
 rutas.post('/actualizarusuario',controlador.actualizarusu);
+rutas.post('/cerrar',controlador.cerrar)
 module.exports=rutas;
