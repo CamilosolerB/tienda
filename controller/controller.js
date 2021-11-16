@@ -52,17 +52,24 @@ controller.login=async(req,res,next)=>{
     })
 }
 controller.usuario=(req,res,next)=>{
-    mysqlconexion.query("select * from usuarios",(err,result)=>{
-        if(err){
-            throw err
-        }
-        else{
-            res.render('usuarios',{datos:result})
-            console.log(result)
-        }
-    })
+    if(req.session.login){
+        mysqlconexion.query("select * from usuarios",(err,result)=>{
+            if(err){
+                throw err
+            }
+            else{
+                res.render('usuarios',{datos:result})
+                console.log(result)
+            }
+        })
+    }
+    else{
+        res.redirect('/')
+    }
+    
 }
 controller.clientes=(req,res,next)=>{
+    if(req.session.login){
     mysqlconexion.query('SELECT * FROM clientes',(err,result)=>{
         if(err){
             throw err
@@ -71,22 +78,92 @@ controller.clientes=(req,res,next)=>{
             res.render('clientes',{datos:result})
         }
     })
-    
+    }
+    else{
+        res.redirect('/')
+    }
+
 }
 controller.proveedores=(req,res,next)=>{
-    res.render('proveedores')
+    if(req.session.login){
+        mysqlconexion.query('SELECT * FROM clientes',(err,result)=>{
+            if(err){
+                throw err
+            }
+            else{
+                res.render('proveedores',{datos:result})
+            }
+        })
+    }
+    else{
+        res.redirect('/')
+    }
+
+    
 }
 controller.productos=(req,res,next)=>{
-    res.render('productos')
+    if(req.session.login){
+        mysqlconexion.query('SELECT * FROM clientes',(err,result)=>{
+            if(err){
+                throw err
+            }
+            else{
+                res.render('productos',{datos:result})
+            }
+        })
+    }
+    else{
+        res.redirect('/')
+    }
 }
 controller.reportes=(req,res,next)=>{
-    res.render('reportes')
+    if(req.session.login){
+        mysqlconexion.query('SELECT * FROM clientes',(err,result)=>{
+            if(err){
+                throw err
+            }
+            else{
+                res.render('reportes',{datos:result})
+            }
+        })
+    }
+    else{
+        res.redirect('/')
+    }
+    
 }
 controller.ventas=(req,res,next)=>{
-    res.render('ventas');
+    if(req.session.login){
+        mysqlconexion.query('SELECT * FROM clientes',(err,result)=>{
+            if(err){
+                throw err
+            }
+            else{
+                res.render('ventas',{datos:result})
+            }
+        })
+    }
+    else{
+        res.redirect('/')
+    }
+    
 }
 controller.insusu=(req,res)=>{
-    res.render('insusu')
+    if(req.session.login){
+        res.render('insusu')
+    }
+    else{
+        res.redirect('/')
+    }
+    
+}
+controller.inscli=(req,res)=>{
+    if(req.session.login){
+        res.render('inscli')
+    }
+    else{
+        res.redirect('/')
+    }
 }
 controller.insertarusu=async(req,res)=>{
     const ced = req.body.doc;
@@ -106,19 +183,22 @@ controller.insertarusu=async(req,res)=>{
     })
 }
 controller.actusu=async(req,res,next)=>{
-    console.log("entrada al metodo")
-    const ced = req.params.cedula;
-    console.log(ced)
-    mysqlconexion.query('SELECT * FROM usuarios WHERE cedula_usuarios="'+ced+'"',async(err,result)=>{
-        console.log(result)
-        if(err){
-            next(new Error(err))
-        }
-        else{
-            res.render('actusu',{datos:result})
+    if(req.session.login){
+        const ced = req.params.cedula;
+        console.log(ced)
+        mysqlconexion.query('SELECT * FROM usuarios WHERE cedula_usuarios="'+ced+'"',async(err,result)=>{
             console.log(result)
-        }
-    })
+            if(err){
+                next(new Error(err))
+            }
+            else{
+                res.render('actusu',{datos:result})
+                console.log(result)
+            }
+        })
+    }
+    console.log("entrada al metodo")
+
 }
     controller.actualizarusu=async(req,res)=>{
         const ced = req.body.doc;
@@ -148,7 +228,7 @@ controller.actusu=async(req,res,next)=>{
     }
     controller.cerrar=(req,res,next)=>{
         req.session.destroy(()=>{
-            res.redirect('/logueo')
+            res.redirect('/')
         })
     }
 module.exports=controller;

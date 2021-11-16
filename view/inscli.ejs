@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/paginamenu.css">
+    <title>Surtifruiver S.A</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Agregar cliente</h1>
+    <div class="foorm">
+        <div><img src="https://www.marketingdirecto.com/wp-content/uploads/2021/09/atencion-al-cliente.png" alt="" class="foto" style="border-radius: 10px;"></div>
+        <div>
+            <form action="/agregarcliente" method="post" class="formulariocli">
+                <label for="cedula">Cedula del cliente</label>
+                <input type="number" name="cedula" id="cedula" class="labels" placeholder="Cedula">
+                <label for="direc">Direccion del cliente</label>
+                <input type="text" name="direc" id="direct" class="labels" placeholder="Direccion">
+                <label for="email">Correo electronico del cliente</label>
+                <input type="email" name="email" id="email" class="labels" placeholder="Correo electronico">
+                <label for="nombre">Nombre del cliente</del></label>
+                <input type="text" name="nombre" id="nombre" class="labels" placeholder="Nombre del cliente">
+                <label for="telefono">Telefono del cliente</label>
+                <input type="number" name="telefono" id="telefono" class="labels" placeholder="Telefono">
+                <button type="button" onclick="confirma()" class="botoncito">Añadir</button>
+            </form>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
+    <script>
+
+        function confirma(){
+          Swal.fire({
+        title: 'Usuario insertado',
+        width: 600,
+        padding: '3em',
+        icon:'success',
+        background: '#fff url(/images/trees.png)',
+        backdrop: `
+          rgba(0,0,123,0.4)
+          url("https://i2.wp.com/hipertextual.com/wp-content/uploads/2016/10/giphy.gif?fit=400%2C234&ssl=1")
+          left top
+          no-repeat
+        `
+      })
+    }
+    </script>
+</body>
+</html>

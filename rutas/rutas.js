@@ -15,9 +15,11 @@ rutas.get('/ventas',controlador.ventas);
 rutas.get('/agregarusuario',controlador.insusu);
 rutas.get('/infousuario/:cedula',controlador.actusu);
 rutas.get('/borrarusuario/:cedula',controlador.borrarusu);
+rutas.get('/cerrar',controlador.cerrar);
+rutas.get('/agregarcliente',controlador.inscli);
 //tipo post
 rutas.post('/login',controlador.login)
 rutas.post('/insertarusuario',controlador.insertarusu)
 rutas.post('/actualizarusuario',controlador.actualizarusu);
-rutas.post('/cerrar',controlador.cerrar)
+
 module.exports=rutas;
