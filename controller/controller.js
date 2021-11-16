@@ -29,7 +29,7 @@ controller.login=async(req,res,next)=>{
             next(new Error(err))
         }
 
-         else if(resbb!=0 && bcryptjs.compare(cla,password)){
+         else if(resbb!=0 && bcryptjs.compareSync(cla,password)){
             console.log(cla)
              console.log(resbb[0].password)
             req.session.login = true;
@@ -40,7 +40,13 @@ controller.login=async(req,res,next)=>{
             
         }
         else{
-            mensage();
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+              })
+            console.log('contraseña incorrecta')
             res.redirect('/')
         }
     })
@@ -57,7 +63,15 @@ controller.usuario=(req,res,next)=>{
     })
 }
 controller.clientes=(req,res,next)=>{
-    res.render('clientes')
+    mysqlconexion.query('SELECT * FROM clientes',(err,result)=>{
+        if(err){
+            throw err
+        }
+        else{
+            res.render('clientes',{datos:result})
+        }
+    })
+    
 }
 controller.proveedores=(req,res,next)=>{
     res.render('proveedores')
