@@ -181,6 +181,22 @@ controller.insertarusu=async(req,res)=>{
             res.redirect('/usuario')
         }
     })
+}//arranque
+controller.insertarclie=async(req,res)=>{
+    const ced = req.body.cedula;
+    const cor = req.body.direct;
+    const nam = req.body.email;
+    const cla = req.body.nombre;
+    const usu = req.body.telefono;
+
+    mysqlconexion.query('Insert into clientes set?',{cedula_clientes:ced,direccion_cliente:cor,email_cliente:nam,nombre_cliente:cla,telefono_cliente:usu},(err)=>{
+        if(err){
+            throw err
+        }
+        else{
+            res.redirect('/cliente')
+        }
+    })
 }
 controller.actusu=async(req,res,next)=>{
     if(req.session.login){

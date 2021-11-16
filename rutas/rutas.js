@@ -21,5 +21,6 @@ rutas.get('/agregarcliente',controlador.inscli);
 rutas.post('/login',controlador.login)
 rutas.post('/insertarusuario',controlador.insertarusu)
 rutas.post('/actualizarusuario',controlador.actualizarusu);
+rutas.post('/agregarcliente',controlador.insertarclie)
 
 module.exports=rutas;
