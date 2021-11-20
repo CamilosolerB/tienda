@@ -14,13 +14,16 @@ rutas.get('/reportes',controlador.reportes);
 rutas.get('/ventas',controlador.ventas);
 rutas.get('/agregarusuario',controlador.insusu);
 rutas.get('/infousuario/:cedula',controlador.actusu);
+rutas.get('/infocliente/:cedula',controlador.actclient);
 rutas.get('/borrarusuario/:cedula',controlador.borrarusu);
+rutas.get('/borrarcliente/:cedula',controlador.borrarcliente);
 rutas.get('/cerrar',controlador.cerrar);
 rutas.get('/agregarcliente',controlador.inscli);
 //tipo post
 rutas.post('/login',controlador.login)
 rutas.post('/insertarusuario',controlador.insertarusu)
 rutas.post('/actualizarusuario',controlador.actualizarusu);
-rutas.post('/agregarcliente',controlador.insertarclie)
+rutas.post('/actucliente',controlador.actucliente);
+rutas.post('/agregarcliente',controlador.insertarclie);
 
 module.exports=rutas;

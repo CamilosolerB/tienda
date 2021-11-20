@@ -55,8 +55,8 @@
           <td><%=datos[i].email_cliente%></td>
           <td><%=datos[i].nombre_cliente%></td>
           <td><%=datos[i].telefono_cliente%></td>
-          <td><button type="button" onclick="window.location.href='/infousuario/<%=datos[i].cedula_cliente%>'" class="btn btn-outline-primary"><i class="fas fa-exchange-alt"></i></button>
-            <button type="button" onclick="confirmar(<%=datos[i].cedula_cliente%>)" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+          <td><button type="button" onclick="window.location.href='/infocliente/<%=datos[i].cedula_clientes%>'" class="btn btn-outline-primary"><i class="fas fa-exchange-alt"></i></button>
+            <button type="button" onclick="confirmar(<%=datos[i].cedula_clientes%>)" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
           </td>
           
         </tr>
@@ -96,7 +96,7 @@
     
           
         )
-        window.location ='/borrarusuario/'+id
+        window.location ='/borrarcliente/'+id
       }
     })
       }
