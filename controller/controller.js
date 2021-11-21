@@ -79,7 +79,7 @@ controller.clientes=(req,res)=>{
 //consulta de los proveedores
 controller.proveedores=(req,res,next)=>{
     if(req.session.login){
-        mysqlconexion.query('SELECT * FROM clientes',(err,result)=>{
+        mysqlconexion.query('SELECT * FROM proveedores',(err,result)=>{
             if(err){
                 throw err
             }
@@ -97,7 +97,7 @@ controller.proveedores=(req,res,next)=>{
 //consulta de los productos
 controller.productos=(req,res,next)=>{
     if(req.session.login){
-        mysqlconexion.query('SELECT * FROM clientes',(err,result)=>{
+        mysqlconexion.query('SELECT * FROM productos',(err,result)=>{
             if(err){
                 throw err
             }
@@ -113,7 +113,7 @@ controller.productos=(req,res,next)=>{
 //consulta de los reportes
 controller.reportes=(req,res,next)=>{
     if(req.session.login){
-        mysqlconexion.query('SELECT * FROM clientes',(err,result)=>{
+        mysqlconexion.query('SELECT * FROM detalle_venta',(err,result)=>{
             if(err){
                 throw err
             }
@@ -130,7 +130,7 @@ controller.reportes=(req,res,next)=>{
 //consulta de los clientes
 controller.ventas=(req,res,next)=>{
     if(req.session.login){
-        mysqlconexion.query('SELECT * FROM clientes',(err,result)=>{
+        mysqlconexion.query('SELECT * FROM ventas',(err,result)=>{
             if(err){
                 throw err
             }
@@ -144,6 +144,9 @@ controller.ventas=(req,res,next)=>{
     }
     
 }
+
+
+//vista para las insersiones
 controller.insusu=(req,res)=>{
     if(req.session.login){
         res.render('insusu')
@@ -161,6 +164,16 @@ controller.inscli=(req,res)=>{
         res.redirect('/')
     }
 }
+controller.inspro=(req,res)=>{
+    if(req.session.login){
+        res.render('inspro')
+    }
+    else{
+        res.redirect('/')
+    }
+}
+
+//post para las insersiones
 controller.insertarusu=async(req,res)=>{
     const ced = req.body.doc;
     const cor = req.body.correo;
@@ -195,6 +208,22 @@ controller.insertarclie=async(req,res)=>{
     })
 }
 
+controller.insertarpro=async(req,res)=>{
+    const ced = req.body.nit;
+    const cor = req.body.ciudad;
+    const nam = req.body.direccion;
+    const cla = req.body.nombre;
+    const usu = req.body.telefono;
+
+    mysqlconexion.query('Insert into proveedores set ?',{nitproveedor:ced,ciudad_proveedor:cor,direccion_proveedor:nam,nombre_proveedor:cla,telefono_proveedor:usu},(err)=>{
+        if(err){
+            throw err
+        }
+        else{
+            res.redirect('/proveedores')
+        }
+    })
+}
 
 //vistas para actualizacion de datos
 controller.actusu=async(req,res,next)=>{
@@ -226,6 +255,24 @@ controller.actclient=async(req,res,next)=>{
             }
             else{
                 res.render('actcli',{datos:result})
+            }
+        })
+    }
+    console.log("entrada al metodo")
+
+}
+
+controller.actprovee=async(req,res,next)=>{
+    if(req.session.login){
+        const ced = req.params.nit;
+        console.log(ced)
+        mysqlconexion.query('SELECT * FROM proveedores WHERE nitproveedor="'+ced+'"',async(err,result)=>{
+            console.log(result)
+            if(err){
+                next(new Error(err))
+            }
+            else{
+                res.render('actpro',{datos:result})
             }
         })
     }
@@ -266,7 +313,22 @@ controller.actclient=async(req,res,next)=>{
             }
         })
     }
-//Borrado de las tablas
+    controller.actuproveedor=(req,res)=>{
+        const ced = req.body.nit;
+        const cor = req.body.ciudad;
+        const nam = req.body.direccion;
+        const cla = req.body.nombre;
+        const usu = req.body.telefono;
+        mysqlconexion.query('UPDATE proveedores SET ? WHERE nitproveedor ="'+ced+'"',{ciudad_proveedor:cor,direccion_proveedor:nam,nombre_proveedor:cla,telefono_proveedor:usu},(err)=>{
+            if(err){
+                throw err
+            }
+            else{
+                res.redirect('/proveedores')
+            }
+        })
+    }
+//Borrado de las tablas//
     controller.borrarusu=(req,res)=>{
         const id = req.params.cedula;
         mysqlconexion.query('DELETE FROM usuarios WHERE cedula_usuarios=?',[id],(err)=>{
@@ -282,7 +344,12 @@ controller.actclient=async(req,res,next)=>{
             res.redirect('/cliente')
         })
     }
-
+    controller.borrarprov=(req,res)=>{
+        const ced = req.params.nit;
+        mysqlconexion.query('DELETE FROM proveedores WHERE nitproveedor=?',[ced],(err)=>{
+            res.redirect('/proveedores')
+        })
+    }
 //cierre en las sesiones
     controller.cerrar=(req,res,next)=>{
         req.session.destroy(()=>{

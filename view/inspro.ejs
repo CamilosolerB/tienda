@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/paginamenu.css">
+    <title>Surtifruiver S.A</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Agregar proveedor</h1>
+    <div class="foorm">
+        <div><img src="https://1.bp.blogspot.com/-Gm6XdC_3TdI/X3s8BnFjomI/AAAAAAAAMO8/H1lY3cgqYo0iM8DUHj91Nrd-1J3vnuYygCNcBGAsYHQ/s16000/Proveedores%2BInternacionales%2B%252B%2BD%25C3%25B3nde%2By%2Bc%25C3%25B3mo%2Bencontrarlos.jpg" alt="" class="foto" style="border-radius: 10px;"></div>
+        <div>
+            <form action="/agregarprov" method="post" class="formulariocli">
+                <label for="nit">Nit del proveedor</label>
+                <input type="number" name="nit" id="cedula" class="labels" placeholder="Nit">
+                <label for="ciudad">Ciudad del proveedor</label>
+                <input type="text" name="ciudad" id="direct" class="labels" placeholder="Ciudad">
+                <label for="direccion">Direccion del proveedor</label>
+                <input type="text" name="direccion" id="email" class="labels" placeholder="Direccion">
+                <label for="nombre">Nombre del proveedor</del></label>
+                <input type="text" name="nombre" id="nombre" class="labels" placeholder="Nombre">
+                <label for="telefono">Telefono del proveedor</label>
+                <input type="number" name="telefono" id="telefono" class="labels" placeholder="Telefono">
+                <button type="submit" onclick="confirma()" class="botoncito">Añadir</button>
+            </form>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
+    <script>
+
+        function confirma(){
+          Swal.fire({
+        title: 'Usuario insertado',
+        width: 600,
+        padding: '3em',
+        icon:'success',
+        background: '#fff url(/images/trees.png)',
+        backdrop: `
+          rgba(0,0,123,0.4)
+          url("https://i2.wp.com/hipertextual.com/wp-content/uploads/2016/10/giphy.gif?fit=400%2C234&ssl=1")
+          left top
+          no-repeat
+        `
+      })
+    }
+    </script>
+</body>
+</html>

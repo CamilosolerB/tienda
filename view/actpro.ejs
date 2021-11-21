@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/formularios.css">
+    <title>Surtifruiver S.A</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Actualizar proveedor</h1>
+    <div class="foorm">
+        <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSohSWuaxInrPCAVga2qIJwSyi-QYcjMMJxTQ&usqp=CAU" alt="" class="foto" style="border-radius: 10px;"></div>
+        <div>
+            <form action="/actualizarpro" method="post" class="formulariocli">
+                <% datos.forEach( function (datos) {%>
+                    <label for="nit">Nit del proveedor</label>
+                    <input type="number" name="nit" value="<%=datos.nitproveedor%>" id="cedula" class="labels" placeholder="Nit">
+                    <label for="ciudad">Ciudad del proveedor</label>
+                    <input type="text" name="ciudad" value="<%=datos.ciudad_proveedor%>" id="direct" class="labels" placeholder="Ciudad">
+                    <label for="direccion">Direccion del proveedor</label>
+                    <input type="text" name="direccion" value="<%=datos.direccion_proveedor%>" id="email" class="labels" placeholder="Direccion">
+                    <label for="nombre">Nombre del proveedor</del></label>
+                    <input type="text" name="nombre" value="<%=datos.nombre_proveedor%>" id="nombre" class="labels" placeholder="Nombre">
+                    <label for="telefono">Telefono del proveedor</label>
+                    <input type="number" name="telefono" value="<%=datos.telefono_proveedor%>" id="telefono" class="labels" placeholder="Telefono">
+                    <button type="submit"  class="botoncito">Añadir</button>
+                <%})%>
+            
+            </form>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
+</body>
+</html>
