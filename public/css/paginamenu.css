@@ -86,10 +86,13 @@ header{
     color: #222;
     background-color: #f4f4f4;
     text-align: center;
+    transition: all 2s;
+    box-shadow: #222 50px;
     }
 .link:hover{
     border: 1px solid black;
     color: black;
+
 }
 .grid{
     display: grid;

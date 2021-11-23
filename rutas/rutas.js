@@ -1,5 +1,17 @@
 const express = require('express');
 const controlador = require('../controller/controller')
+const fs = require('fs');
+const multer = require('multer')
+const storage = multer.diskStorage({
+    destination: function (req,file,cb){
+        cb(null, 'uploads')
+    },
+    filename: function(req,file,cb){
+        cb(null, file.fieldname + "-" + Date.now())
+    }
+})
+
+const upload = multer({storage})
 const rutas = express.Router();
 
 //indicacion del rest
@@ -31,6 +43,7 @@ rutas.post('/agregarprov',controlador.insertarpro);
 rutas.post('/actualizarpro',controlador.actuproveedor);
 //REST productos
 rutas.get('/productos',controlador.productos);
+rutas.post('/agregarproducto',controlador.insproduct)
 //REST ventas
 rutas.get('/ventas',controlador.ventas);
 //REST de reportes

@@ -2,6 +2,11 @@ const mysqlconexion = require('../conexion/conection')
 const bcryptjs = require('bcryptjs')
 const controller={};
 const Swal = require('sweetalert2')
+const csv = require('csv-parser')
+const fs = require('fs');
+const multer = require('multer')
+const result = [];
+
 //creacion de los metodos
 
 //Pagina principal del proyecto
@@ -225,6 +230,19 @@ controller.insertarpro=async(req,res)=>{
     })
 }
 
+controller.insproduct=async(req,res,next)=>{
+    upload.single('myFile')
+    const file = req.body.csv;
+    console.log(file)
+    fs.createReadStream()
+    .pipe(csv({}))
+    .on('data', (data) => result.push(data))
+    .on('end', () =>{
+        console.log("resultado 1 "+result[0])
+        console.log("resultado 2 "+result[1])
+    })
+    res.redirect('/productos')
+}
 //vistas para actualizacion de datos
 controller.actusu=async(req,res,next)=>{
     if(req.session.login){
