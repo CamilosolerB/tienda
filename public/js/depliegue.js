@@ -19,6 +19,9 @@ function consultar(){
     consu.style.transition = 'all 2s';
 }
 
+$(document).ready(function() {
+    $('#tablausu').DataTable();
+} );
 
 const modal = document.querySelector(".usuario");
 const clien = document.querySelector(".cliente");
