@@ -31,3 +31,39 @@
             </ul>
         </nav>
     </div>
+        <div class="menubotones">
+            <h1>Consulte el reporte deseado</h1>
+            <button onclick="abrirmodalusu()" class="botones">Listado de Usuarios</button>
+            <button onclick="abrircliente()" class="botones">Listado de clientes</button>
+            <button onclick="abrirventas()" class="botones">Ventas por clientes</button>
+        </div>
+    <div class="usuario">
+        <div class="backdrop"></div>
+        <div class="contenido">
+            <div class="cabecera">
+                <h1>Usuarios registrados</h1>
+                <button  onclick="cerrarmodalusu()">X</button>
+            </div>
+        </div>
+    </div>
+    <div class="cliente">
+        <div class="backdrop"></div>
+        <div class="contenido">
+            <div class="cabecera">
+                <h1>Clientes registrados</h1>
+                <button onclick="cerrarcliente()">X</button>
+            </div>
+        </div>
+    </div>    
+    <div class="ventas">
+        <div class="backdrop"></div>
+        <div class="contenido">
+            <div class="cabecera">
+                <h1>Ventas registradas</h1>
+                <button onclick="cerrarventas()">X</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/depliegue.js"></script>
+</body>
+</html>

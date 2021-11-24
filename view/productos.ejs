@@ -31,17 +31,11 @@
             </ul>
         </nav>
     </div>
-    <h1 style="text-align: center;">Consulta e insertar productos</h1>
-    <div class="grid" id="grid">
-        <button class="link" id="link" onclick="insertar()">Insertar</button>
-        <button class="link" id="cons" onclick="consultar()">Consultar</button>
-    </div>
-    
-    <section class="consulta"></section>
+    <h1 style="text-align: center;">insertar productos</h1>
     <section class="inserta">
-        <form action="/agregarproducto" method="post">
-            <label for="csv">Inserte el archivo csv</label>
-            <input type="file" name="csv" id="csv">
+        <form action="/agregarproducto" method="post" enctype="multipart/form-data">
+                <label for="csv">Inserte el archivo csv</label>
+                <input type="file" name="csv" id="csv">
             <button type="submit">Subir archivo</button>
         </form>
     </section>

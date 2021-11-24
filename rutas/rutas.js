@@ -1,18 +1,23 @@
 const express = require('express');
+const csvtojson = require('csvtojson')
+const csvfilepath = "uploads/texto.csv"
+const mysqlconexion = require('../conexion/conection')
 const controlador = require('../controller/controller')
 const fs = require('fs');
 const multer = require('multer')
+const mimeTypes =require('mime-types')
+const csv = require('csv-parser')
+const result = []
 const storage = multer.diskStorage({
-    destination: function (req,file,cb){
-        cb(null, 'uploads')
-    },
+    destination: 'uploads/',
     filename: function(req,file,cb){
-        cb(null, file.fieldname + "-" + Date.now())
+        cb(null, "texto.csv")
     }
 })
 
 const upload = multer({storage})
 const rutas = express.Router();
+
 
 //indicacion del rest
 
@@ -43,7 +48,18 @@ rutas.post('/agregarprov',controlador.insertarpro);
 rutas.post('/actualizarpro',controlador.actuproveedor);
 //REST productos
 rutas.get('/productos',controlador.productos);
-rutas.post('/agregarproducto',controlador.insproduct)
+rutas.post('/agregarproducto',upload.single('csv'), function (req,res){
+
+    csvtojson()
+    .fromFile(csvfilepath)
+    .then((json)=>{
+        console.log(json)
+    })
+    //fs.writeFileSync("salida.json", JSON.stringify(json), 'utf-8',
+    //function(err){res.send(err)}
+    //)
+    res.redirect('/productos')
+})
 //REST ventas
 rutas.get('/ventas',controlador.ventas);
 //REST de reportes
