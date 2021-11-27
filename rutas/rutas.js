@@ -46,6 +46,7 @@ rutas.get('/infoproveedor/:nit',controlador.actprovee);
 rutas.get('/agregarproveedor',controlador.inspro);
 rutas.post('/agregarprov',controlador.insertarpro);
 rutas.post('/actualizarpro',controlador.actuproveedor);
+rutas.post('/filtro/:cedula',controlador.filtro)
 //REST productos
 rutas.get('/productos',controlador.productos);
 rutas.post('/agregarproducto',upload.single('csv'), function (req,res){
@@ -60,6 +61,7 @@ rutas.post('/agregarproducto',upload.single('csv'), function (req,res){
     //)
     res.redirect('/productos')
 })
+rutas.post('/creaproducto',controlador.insertarprod);
 //REST ventas
 rutas.get('/ventas',controlador.ventas);
 //REST de reportes

@@ -104,11 +104,12 @@ controller.proveedores=(req,res,next)=>{
 //consulta de los productos
 controller.productos=(req,res,next)=>{
     if(req.session.login){
-        mysqlconexion.query('SELECT * FROM productos',(err,result)=>{
+        mysqlconexion.query('SELECT * FROM proveedores',(err,result)=>{
             if(err){
                 throw err
             }
             else{
+                console.log(result)
                 res.render('productos',{datos:result})
             }
         })
@@ -120,13 +121,27 @@ controller.productos=(req,res,next)=>{
 //consulta de los reportes
 controller.reportes=(req,res,next)=>{
     if(req.session.login){
-        mysqlconexion.query('SELECT * FROM clientes, usuarios',(err,result)=>{
+        mysqlconexion.query('SELECT * FROM usuarios',(err,result)=>{
             if(err){
                 throw err
             }
             else{
-                console.log(result)
-                res.render('reportes',{datos:result})
+                mysqlconexion.query('SELECT * FROM clientes',(err,resbb)=>{
+                    if(err){
+                        throw err
+                    }
+                    else{
+                        mysqlconexion.query('Select * from clientes INNER JOIN ventas on (cedula_clientes=cedula_cliente)',(err,vent)=>{
+                            if(err){
+                                throw err
+                            }
+                            else{
+                                res.render('reportes',{datos:result,clientes:resbb,ultimo:vent})
+                            }
+                        })
+                    }
+                })
+
             }
         })
     }
@@ -138,12 +153,24 @@ controller.reportes=(req,res,next)=>{
 //consulta de los clientes
 controller.ventas=(req,res,next)=>{
     if(req.session.login){
-        mysqlconexion.query('SELECT * FROM ventas',(err,result)=>{
+        mysqlconexion.query('SELECT * FROM productos',(err,result)=>{
             if(err){
                 throw err
             }
             else{
-                res.render('ventas',{datos:result})
+                mysqlconexion.query('SELECT * FROM clientes',(err,resbb)=>{
+                    if(err){
+                        throw err
+                    }
+                    else{
+                        //xd
+                        console.log(result)
+                        res.render('ventas',{datos:result,clientes:resbb})
+                        console.log(resbb)
+
+                    }
+                })
+
             }
         })
     }
@@ -151,6 +178,22 @@ controller.ventas=(req,res,next)=>{
         res.redirect('/')
     }
     
+}
+
+//consulta para clientes individualmente
+controller.filtro=(req,res)=>{
+    const ced = req.params.cedula;
+    mysqlconexion.query('SELECT * FROM clientes where cedula_clientes=?',[ced],(err,result)=>{
+        if(err){
+            throw err
+        }
+        
+        else{
+            console.log(result);
+            console.log("cappturado correctamente")
+            res.render('consultavent',{clientes:result})
+        }
+    })
 }
 
 
@@ -232,7 +275,23 @@ controller.insertarpro=async(req,res)=>{
         }
     })
 }
-
+controller.insertarprod=(req,res)=>{
+    const cod = req.body.cc;
+    const nom = req.body.nn;
+    const nit = req.body.nini;
+    const com = req.body.coco;
+    const iva = req.body.ii;
+    const ven = req.body.vv;
+    mysqlconexion.query('Insert into productos set ?',{codigo_producto:cod,nombre_producto:nom,nitproveedor_product:nit,precio_compra:com,ivacompra:iva,precio_venta:ven},(err)=>{
+        if(err){
+            throw err
+        }
+        else{
+            console.log("Insertado correctamente")
+            res.redirect('/productos')
+        }
+    })
+}
 
 //vistas para actualizacion de datos
 controller.actusu=async(req,res,next)=>{

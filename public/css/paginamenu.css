@@ -258,3 +258,40 @@ header{
     background-image: -webkit-gradient(linear,left top,left bottom,color-stop(10%,#f0a100),to(#f70));
     background-image: linear-gradient(#f0a100 10%,#f70 100%);
   }
+.lastablas{
+    width: 90%;
+    margin-left: 5%;
+    padding-top: 5%;
+}
+.mainp{
+    width: 40%;
+    position: absolute;
+    left: 28%;
+    height: 50vh;
+    border: 1px blueviolet solid;
+}
+.mainp section{
+    background-color: #fff;
+    width: 40%;
+    margin-top: 5%;
+    padding: 5%;
+    margin-left: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.mainp section input{
+    width: 90%;
+    height: 2;
+    margin: 2%;
+}
+.mainp section select{
+    width: 90%;
+    height: 2;
+    margin: 2%;
+}
+.inserta{
+    display: none;
+}

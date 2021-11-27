@@ -37,20 +37,18 @@
             <select onchange="consulta()" name="cedula" id="cedula" name="Busque el documento del usuario"> 
                 <option disabled>Busque el documento del usuario</option>
                 <% for(i = 0; i<clientes.length;i++){%>
-                <option value="<%=clientes[i].cedula_clientes%>"><%=clientes[i].cedula_clientes%></option>
-            <%}%>
+                <option value="<%=clientes[i].cedula_clientes%>"><%=clientes.[i].cedula_clientes%></option>
             </select>
-
-                    <label for="nombre">Nombre del usuario</label>
-                    <h3 id="nombre"></h3>
-
+                <label for="nombre">Nombre del usuario</label>
+                <h3 id="nombre">datos[i].nombre_cliente</h3>
+        <%}%>
         </form>
     </section>
     <script>
         function consulta(){
             let cedu = document.getElementById("cedula").value
-            console.log(cedu)
-            window.location = '/filtro/'+cedu;
+        console.log(cedu)
+        
             
         let nom = document.getElementById('nombre')
         }

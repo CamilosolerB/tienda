@@ -49,7 +49,7 @@
                 <h1>Usuarios registrados</h1>
                 <button  onclick="cerrarmodalusu()">X</button>
             </div>
-            <section>
+            <section class="lastablas">
                 <table class="table table-dark table-striped" id="tablausu">
                     <thead>
                       <tr>
@@ -83,7 +83,7 @@
                 <h1>Clientes registrados</h1>
                 <button onclick="cerrarcliente()">X</button>
             </div>
-            <section>
+            <section class="lastablas">
                 <table class="table table-dark table-striped" id="tablausu">
                     <thead>
                       <tr>
@@ -95,13 +95,13 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <%  for(i=0;i<datos.length;i++){%>
+                      <%  for(i=0;i<clientes.length;i++){%>
                       <tr>
-                        <th scope="row"><%=datos[i].cedula_clientes%></th>
-                        <td><%=datos[i].direccion_cliente%></td>
-                        <td><%=datos[i].email_cliente%></td>
-                        <td><%=datos[i].nombre_cliente%></td>
-                        <td><%=datos[i].telefono_cliente%></td>
+                        <th scope="row"><%=clientes[i].cedula_clientes%></th>
+                        <td><%=clientes[i].direccion_cliente%></td>
+                        <td><%=clientes[i].email_cliente%></td>
+                        <td><%=clientes[i].nombre_cliente%></td>
+                        <td><%=clientes[i].telefono_cliente%></td>
                         
                       </tr>
                       <%}%>
@@ -117,6 +117,26 @@
                 <h1>Ventas registradas</h1>
                 <button onclick="cerrarventas()">X</button>
             </div>
+            <section class="lastablas">
+                <table class="table table-dark table-striped" id="tablausu">
+                    <thead>
+                      <tr>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Total valor ventas</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <%  for(i=0;i<ultimo.length;i++){%>
+                      <tr>
+                        <th scope="row"><%=ultimo[i].cedula_clientes%></th>
+                        <td><%=ultimo[i].nombre_cliente%></td>
+                        <td><%=ultimo[i].valor_venta%></td>
+                      </tr>
+                      <%}%>
+                    </tbody>
+                  </table>
+              </section>
         </div>
     </div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
