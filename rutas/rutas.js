@@ -56,14 +56,13 @@ rutas.post('/agregarproducto',upload.single('csv'), function (req,res){
     .then((json)=>{
         console.log(json)
     })
-    //fs.writeFileSync("salida.json", JSON.stringify(json), 'utf-8',
-    //function(err){res.send(err)}
-    //)
+
     res.redirect('/productos')
 })
 rutas.post('/creaproducto',controlador.insertarprod);
 //REST ventas
 rutas.get('/ventas',controlador.ventas);
+rutas.get('/productosven/:cc',controlador.consultaproductor);
 //REST de reportes
 rutas.get('/reportes',controlador.reportes);
 

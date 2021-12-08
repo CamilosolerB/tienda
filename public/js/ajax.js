@@ -13,6 +13,9 @@ function ajaxpro(){
         url:"/creaproducto",
         data:{
             cc:cod,nn:nom,nini:nit,coco:com,ii:iva,vv:ven
+        },
+        success: function (cedula){
+            
         }
     })
 

@@ -295,3 +295,19 @@ header{
 .inserta{
     display: none;
 }
+.center{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.finalizacion{
+    float: right;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+}
+.finalizacion input{
+    padding: 2%
+}

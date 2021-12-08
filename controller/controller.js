@@ -164,9 +164,8 @@ controller.ventas=(req,res,next)=>{
                     }
                     else{
                         //xd
-                        console.log(result)
                         res.render('ventas',{datos:result,clientes:resbb})
-                        console.log(resbb)
+                        console.log(result)
 
                     }
                 })
@@ -174,10 +173,46 @@ controller.ventas=(req,res,next)=>{
             }
         })
     }
-    else{
-        res.redirect('/')
-    }
+
     
+}
+
+controller.consultaproductor=(req,res)=>{
+
+
+    if(req.session.login){
+        mysqlconexion.query('SELECT * FROM productos',(err,result)=>{
+            if(err){
+                throw err
+            }
+            else{
+                mysqlconexion.query('SELECT * FROM clientes',(err,resbb)=>{
+                    if(err){
+                        throw err
+                    }
+                    else{
+                        //xd
+                        const id = req.params.cc;
+                        mysqlconexion.query('SELECT * from productos WHERE codigo_producto = ?',[id], (err,rows, fields)=>{
+                            //mysqlconexion.end();
+                            if(err){
+                                throw err
+                            }
+                            else{
+                                //xd res.render('venta',{cedula:resultado,datos:result,clientes:resb})
+                                console.log(rows)
+                                res.json(rows)
+                                
+                            }
+                        })
+                    }
+                })
+
+            }
+        })
+    }
+
+
 }
 
 //consulta para clientes individualmente
