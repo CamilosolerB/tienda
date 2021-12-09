@@ -311,3 +311,13 @@ header{
 .finalizacion input{
     padding: 2%
 }
+.center select{
+    width: 50%;
+}
+.imptcan{
+    opacity: 0.5;
+    border: none;
+    border-bottom: 2px black solid;
+    width: 15%;
+    font-weight: bold;
+}

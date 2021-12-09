@@ -53,6 +53,7 @@
                     <th scope="col">Codigo producto</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Cantidad</th>
+                    <th scope="col">IVA</th>
                     <th scope="col">Valor total</th>
                   </tr>
                 </thead>
@@ -70,7 +71,10 @@
                             <%}%>
                     </select></th>
                     <td><p id="nombre1"></p></td>
-                    <td><input type="number" name="cantidad1" id="cantidad1"></td>
+                    <td><input type="number" name="cantidad1" id="cantidad1" class="imptcan"></td>
+                    <td>
+                        <p id="iva1"></p>
+                    </td>
                     <td><p id="valor1"></p></td>
                   </tr>
                   <tr>
@@ -86,7 +90,10 @@
                         <p id="nombre2"></p>
                     </td>
                     <td>
-                        <input type="number" name="cantidad2" id="cantidad2">
+                        <input type="number" name="cantidad2" id="cantidad2" class="imptcan">
+                    </td>
+                    <td>
+                        <p id="iva2"></p>
                     </td>
                     <td>
                         <p id="valor2"></p>
@@ -100,20 +107,23 @@
                             <%}%>
                     </select></th>
                     <td><p id="nombre3"></p></td>
-                    <td><input type="number" name="cantidad3" id="cantidad3"></td>
+                    <td><input type="number" name="cantidad3" id="cantidad3" class="imptcan"></td>
+                    <td>
+                        <p id="iva3"></p>
+                    </td>
                     <td><p id="valor3"></p></td>
                 </tr>
                 </tbody>
               </table>  
         </div>
         <div class="finalizacion">
-            <label for="">Total venta
-                <input type="text">
+            <label for="tventa">Total venta
+                <input type="text" id="tventa" name="tventa" value="" readonly>
             </label>
-            <label for="">Total IVA
-                <input type="text">
-            </label><label for="">Total con IVA
-                <input type="text">
+            <label for="iva">Total IVA
+                <input type="text" id="iva" name="iva" value="" readonly>
+            </label><label for="ivato">Total con IVA
+                <input type="text" id="ivato" name="ivato" value="" readonly>
             </label>
         </div>
         </form>
