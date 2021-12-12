@@ -33,7 +33,7 @@
         </nav>
     </div>
     <section class="reveal">
-        <form action="/filtro" method="post">
+        <form>
             <div class="top">
             <label for="cedula">Cedula del cliente</label>
             <select name="cedula" id="cedula" name="Busque el documento del usuario"> 
@@ -44,7 +44,7 @@
             </select>
             <label for="">N° de la compra</label>
             <input type="number" name="indicativo" id="indicativo">
-            <button type="submit" style="float: right">!Hacer la compra</button>
+            <button type="submit" style="float: right" id="subircompra">!Hacer la compra</button>
         </div>
         <div class="center">
             <table class="table table-striped">
@@ -118,10 +118,10 @@
         </div>
         <div class="finalizacion">
             <label for="tventa">Total venta
-                <input type="text" id="tventa" name="tventa" value="" readonly>
+                <input type="text" id="tventa" name="tventa" value="" onfocus="valorventas()" readonly>
             </label>
             <label for="iva">Total IVA
-                <input type="text" id="iva" name="iva" value="" readonly>
+                <input type="text" id="iva" name="iva" value="" readonly onfocus="ivas()">
             </label><label for="ivato">Total con IVA
                 <input type="text" id="ivato" name="ivato" value="" readonly>
             </label>
@@ -130,5 +130,8 @@
     </section>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="../js/producto.js"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
 </body>
 </html>

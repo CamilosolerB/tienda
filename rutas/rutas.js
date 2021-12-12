@@ -63,6 +63,7 @@ rutas.post('/creaproducto',controlador.insertarprod);
 //REST ventas
 rutas.get('/ventas',controlador.ventas);
 rutas.get('/productosven/:cc',controlador.consultaproductor);
+rutas.post('/insertarventa/:indi',controlador.insertarventa1);
 //REST de reportes
 rutas.get('/reportes',controlador.reportes);
 

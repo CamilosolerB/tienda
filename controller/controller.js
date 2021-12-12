@@ -453,6 +453,48 @@ controller.actprovee=async(req,res,next)=>{
             res.redirect('/proveedores')
         })
     }
+    controller.insertarventa1=(req,res)=>{
+        const cod = req.params.indi;
+        const ced = req.body.cc;
+        const pro1 = req.body.p1;
+        const pro2 = req.body.p2;
+        const pro3 = req.body.p3;
+        const nom1 = req.body.n1;
+        const nom2 = req.body.n2;
+        const nom3 = req.body.n3;
+        const can1 = req.body.ca1;
+        const can2 = req.body.ca2;
+        const can3 = req.body.ca3;
+        const iva1 = req.body.iv1;
+        const iva2 = req.body.iv2;
+        const iva3 = req.body.iv3;
+        const valor1 = req.body.v1;
+        const valor2 = req.body.v2;
+        const valor3 = req.body.v3;
+        const totalventas = req.body.tve;
+        const iva = req.body.iva;
+        const total = req.body.tol;
+
+        mysqlconexion.query('INSERT INTO ventas SET ?',
+        {codigo_ventas:cod,cedula_cliente:ced,cedula_usuario:ced,
+        ivaventa:iva,total_venta:totalventas,valor_venta:total}),(err)=>{
+        }
+
+        var response = [
+            [can1,pro1,cod,valor1,valor1,iva1],
+            [can2,pro2,cod,valor2,valor2,iva2],
+            [can3,pro3,cod,valor3,valor3,iva3]
+        ]
+
+        mysqlconexion.query('INSERT INTO detalle_venta (cantidad_producto,codigo_producto_det,codigo_venta,valor_total,valor_venta,valoriva) VALUES ?',[response],(err)=>{
+            if(err){
+                throw err
+            }
+            else{
+                res.redirect('/ventas')
+            }
+        })
+    }
 //cierre en las sesiones
     controller.cerrar=(req,res,next)=>{
         req.session.destroy(()=>{
